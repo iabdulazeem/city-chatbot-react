@@ -5,9 +5,9 @@ import Options from "../components/Options/Options";
 import Quiz from "../components/Quiz/Quiz";
 
 const config = {
-  botName: "LearningBot",
+  botName: "City ChatBot",
   initialMessages: [
-    createChatBotMessage(`Hello. What do you want to learn`, {
+    createChatBotMessage(`Hello. What do you want to know about city of Konstanz`, {
       widget: "options",
     }),
   ],

@@ -1,3 +1,14 @@
+import {post} from '../api/api';
+
+const fetchChatBotResponse = async (inputmessage) => {
+  try {
+    const response = await post('/chat', {"body": inputmessage});
+    return response;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
     this.createChatBotMessage = createChatBotMessage;
@@ -17,6 +28,15 @@ class ActionProvider {
       }
     );
 
+    this.addMessageToState(message);
+  };
+
+  handleCustomQuestion = async (inputmessage) => {
+    const botMessage = await fetchChatBotResponse(inputmessage);
+    console.log('botMessage: ', botMessage);
+    console.log('botMessage: ', typeof botMessage);
+    let message = "Error";
+    if(botMessage) message = this.createChatBotMessage(botMessage.content);
     this.addMessageToState(message);
   };
 

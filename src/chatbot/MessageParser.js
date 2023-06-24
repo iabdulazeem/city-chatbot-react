@@ -4,16 +4,19 @@ class MessageParser {
   }
 
   parse(message) {
-    console.log(message);
+    console.log("input message: ", message);
     const lowercase = message.toLowerCase();
 
-    if (lowercase.includes("hello")) {
-      this.actionProvider.greet();
-    }
+    // Defualt action provider
+    this.actionProvider.handleCustomQuestion(lowercase);
 
-    if (lowercase.includes("javascript") || lowercase.includes("js")) {
-      this.actionProvider.handleJavascriptQuiz();
-    }
+    // if (lowercase.includes("hello")) {
+    //   this.actionProvider.greet();
+    // }
+
+    // if (lowercase.includes("javascript") || lowercase.includes("js")) {
+    //   this.actionProvider.handleJavascriptQuiz();
+    // }
   }
 }
 
